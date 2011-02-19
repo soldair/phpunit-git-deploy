@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+$dir = dirname(__FILE__);
+$p = get_include_path();
+
+$dirs = glob("$dir/../*");
+foreach($dirs as $d){
+	if($d != 'bin'){
+		$p .= ':'.$d;
+	}
+}
+
+set_include_path($p);
+
+$cleaned = "$dir/../.phpunit_cleaned.php";
+if(!is_file($cleaned)){
+//for cleanliness i block out the shebang echo if its there
+	$contents = preg_replace("/^#\!\/usr\/bin\/env php/","",file_get_contents("$dir/../phpunit/phpunit.php"));
+	file_put_contents($cleaned,$contents);
+}
+
+require($cleaned);
