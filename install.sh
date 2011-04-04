@@ -5,4 +5,10 @@ cd $d
 darwin_safe_path=`pwd`
 git submodule update --init
 cd - 1> /dev/null
-echo "export PATH=$darwin_safe_path/bin:\$PATH" >> ~/.bashrc
+
+if [ -f ~/.bash_profile ]
+then
+	echo "export PATH=$darwin_safe_path/bin:\$PATH" >> ~/.bash_profile
+else
+        echo "export PATH=$darwin_safe_path/bin:\$PATH" >> ~/.bashrc
+fi
