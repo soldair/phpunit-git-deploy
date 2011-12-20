@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php
 $dir = dirname(__FILE__);
+
+echo $dir;
+
 $p = get_include_path();
 
 $dirs = glob("$dir/../*");
