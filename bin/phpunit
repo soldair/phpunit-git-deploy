@@ -2,7 +2,7 @@
 <?php
 $dir = dirname(__FILE__);
 
-echo $dir;
+//echo $dir;
 
 $p = get_include_path();
 
