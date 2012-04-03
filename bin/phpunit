@@ -19,8 +19,8 @@ $p = implode(':',$new_path).":$p";
 //echo $p; exit;
 set_include_path($p);
 
-$cleaned = "$dir/../.phpunit_cleaned.php";
-if(!is_file($cleaned)){
+$cleaned = "$dir/../phpunit_cleaned.php";
+if(!is_file($cleaned) || !filesize($cleaned)){
 //for cleanliness i block out the shebang echo if its there
 	$contents = preg_replace("/^#\!\/usr\/bin\/env php/","",file_get_contents("$dir/../phpunit/phpunit.php"));
 	file_put_contents($cleaned,$contents);
